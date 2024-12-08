@@ -17,13 +17,13 @@ const UsageBox = ({ type, value, total, remaining }) => {
 
   const getTypographyGradient = (v) => {
     if (v === Infinity) {
-      return `linear-gradient(0deg, ${theme.palette.success.main}, ${theme.palette.success.dark})`;
+      return theme.colors.gradients.low.typographyGradient;
     } else if (v <= 30 || v > 100) {
-      return `linear-gradient(0deg, ${theme.palette.success.main}, ${theme.palette.success.dark})`;
+      return theme.colors.gradients.low.typographyGradient;
     } else if (v <= 70) {
-      return `linear-gradient(0deg, ${theme.palette.warning.main}, ${theme.palette.warning.dark})`;
+      return theme.colors.gradients.medium.typographyGradient;
     } else {
-      return `linear-gradient(0deg, ${theme.palette.error.main}, ${theme.palette.error.dark})`;
+      return theme.colors.gradients.low.typographyGradient;
     }
   };
 

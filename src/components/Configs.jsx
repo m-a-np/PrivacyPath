@@ -136,11 +136,11 @@ const Configs = ({
               sx={{
                 width: "100%",
                 background: theme.colors.glassColor,
-                color: "#000",
+                color: "#fff",
                 borderRadius: "16px",
                 border: "1px solid #48444a4f",
                 "&:hover": {
-                  background: "rgba(0, 0, 0, 0.1)",
+                  background: "rgba(0, 0, 0, 0.3)",
                 },
               }}
             >

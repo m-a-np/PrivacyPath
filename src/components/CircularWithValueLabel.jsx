@@ -24,16 +24,16 @@ function CircularProgressWithLabel({ value }) {
   const getStyles = (value) => {
     if (value === Infinity) {
       return {
-        gradientColors: theme.colors.gradients.high.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.high.background,
-        typographyGradient: theme.colors.gradients.high.typographyGradient,
+        gradientColors: theme.colors.gradients.low.colors[theme.palette.mode],
+        backgroundColor: theme.colors.gradients.low.background,
+        typographyGradient: theme.colors.gradients.low.typographyGradient,
       };
     }
     if (value <= 30 || value > 100) {
       return {
-        gradientColors: theme.colors.gradients.high.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.high.background,
-        typographyGradient: theme.colors.gradients.high.typographyGradient,
+        gradientColors: theme.colors.gradients.low.colors[theme.palette.mode],
+        backgroundColor: theme.colors.gradients.low.background,
+        typographyGradient: theme.colors.gradients.low.typographyGradient,
       };
     } else if (value <= 70) {
       return {

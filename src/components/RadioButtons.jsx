@@ -10,12 +10,11 @@ const RadioButtons = ({ setIsDarkMode }) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
 
-  const [isLightMode, setIsLightMode] = useState(
-    themeColors.palette.mode === "light"
-  );
+  // Default theme mode set to dark
+  const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
-    const savedTheme = Cookies.get("theme") || themeColors.palette.mode;
+    const savedTheme = Cookies.get("theme") || "dark"; // Default to dark
     const savedLanguage = Cookies.get("language") || lang;
 
     setIsLightMode(savedTheme === "light");
@@ -24,7 +23,7 @@ const RadioButtons = ({ setIsDarkMode }) => {
     if (savedLanguage !== lang) {
       i18n.changeLanguage(savedLanguage);
     }
-  }, [setIsDarkMode, themeColors, i18n, lang]);
+  }, [setIsDarkMode, lang, i18n]);
 
   const handleThemeChange = (theme) => {
     const isLight = theme === "light";

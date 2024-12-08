@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Button, Grid, useTheme } from "@mui/material";
 import BoxS from "./Box";
-import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import QrModal from "./QrModal";
 import QrCodeOutlinedIcon from "@mui/icons-material/QrCodeOutlined";
+import logo from "../assets/logoss.png";
 
 const UserBox = ({ data, subLink }) => {
   const theme = useTheme();
@@ -81,23 +81,20 @@ const UserBox = ({ data, subLink }) => {
       <BoxS>
         <Grid
           item
-          xs={3}
+          xs={4.2}
           display="flex"
           justifyContent="center"
           sx={{ padding: ".3rem", paddingX: ".5rem" }}
         >
-          <SupervisedUserCircleIcon
-            fontSize="large"
-            sx={{
-              color: theme.colors.userBox.logoColor[theme.palette.mode],
-              width: "100%",
-              height: "auto",
-            }}
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: "100%", height: "auto" }}
           />
         </Grid>
         <Grid
           item
-          xs={8}
+          xs={7.5}
           display="flex"
           flexDirection={"column"}
           sx={{

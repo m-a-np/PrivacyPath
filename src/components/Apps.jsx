@@ -69,7 +69,7 @@ const getAccordionStyles = (theme) => ({
   marginBottom: ".8rem",
   background:
     theme === "light" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
-  color: theme.colors.BWColorRevert[theme.palette.mode],
+  color: theme.colors.BWColor[theme.palette.mode],
   "&.Mui-expanded": {
     background:
       theme === "light" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.3)",
@@ -167,7 +167,7 @@ const renderAppAccordion = (
       <AccordionSummary
         expandIcon={
           <ArrowDropDownIcon
-            sx={{ color: theme.colors.BWColorRevert[theme.palette.mode] }}
+            sx={{ color: theme.colors.BWColor[theme.palette.mode] }}
           />
         }
         aria-controls={`panel-${app.name}-content`}
@@ -343,7 +343,7 @@ const Apps = ({ subLink }) => {
                   expandIcon={
                     <ArrowDropDownIcon
                       sx={{
-                        color: theme.colors.BWColorRevert[theme.palette.mode],
+                        color: theme.colors.BWColor[theme.palette.mode],
                       }}
                     />
                   }

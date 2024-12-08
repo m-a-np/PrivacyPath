@@ -233,7 +233,7 @@ function App() {
                       },
                     }}
                     liStyle={{
-                      background: theme.colors.glassColor,
+                      background: "rgba(0, 0, 0, 0.5)",
                     }}
                     isFirst={!isOffSections.appsBox}
                   />
