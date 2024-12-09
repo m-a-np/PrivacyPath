@@ -44,9 +44,10 @@ function CircularProgressWithLabel({ value }) {
       };
     } else {
       return {
-        gradientColors: theme.colors.gradients.low.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.low.background,
-        typographyGradient: theme.colors.gradients.low.typographyGradient,
+        gradientColors:
+          theme.colors.gradients.medium.colors[theme.palette.mode],
+        backgroundColor: theme.colors.gradients.medium.background,
+        typographyGradient: theme.colors.gradients.medium.typographyGradient,
       };
     }
   };

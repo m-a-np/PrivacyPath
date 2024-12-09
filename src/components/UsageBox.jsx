@@ -23,7 +23,7 @@ const UsageBox = ({ type, value, total, remaining }) => {
     } else if (v <= 70) {
       return theme.colors.gradients.medium.typographyGradient;
     } else {
-      return theme.colors.gradients.low.typographyGradient;
+      return theme.colors.gradients.medium.typographyGradient;
     }
   };
 
