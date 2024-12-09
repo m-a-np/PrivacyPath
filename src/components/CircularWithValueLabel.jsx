@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useId } from "react";
 import { useTheme } from "@mui/material/styles";
 
-function CircularProgressWithLabel({ value }) {
+function CircularProgressWithLabel({ value, type }) {
   const theme = useTheme();
   const gradientId = useId();
 
@@ -21,21 +21,8 @@ function CircularProgressWithLabel({ value }) {
     </linearGradient>
   );
 
-  const getStyles = (value) => {
-    if (value === Infinity) {
-      return {
-        gradientColors: theme.colors.gradients.low.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.low.background,
-        typographyGradient: theme.colors.gradients.low.typographyGradient,
-      };
-    }
-    if (value <= 30 || value > 100) {
-      return {
-        gradientColors: theme.colors.gradients.low.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.low.background,
-        typographyGradient: theme.colors.gradients.low.typographyGradient,
-      };
-    } else if (value <= 70) {
+  const getStyles = (type) => {
+    if (type === "usage") {
       return {
         gradientColors:
           theme.colors.gradients.medium.colors[theme.palette.mode],
@@ -44,10 +31,9 @@ function CircularProgressWithLabel({ value }) {
       };
     } else {
       return {
-        gradientColors:
-          theme.colors.gradients.medium.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.medium.background,
-        typographyGradient: theme.colors.gradients.medium.typographyGradient,
+        gradientColors: theme.colors.gradients.low.colors[theme.palette.mode],
+        backgroundColor: theme.colors.gradients.low.background,
+        typographyGradient: theme.colors.gradients.low.typographyGradient,
       };
     }
   };
@@ -56,7 +42,7 @@ function CircularProgressWithLabel({ value }) {
     value === Infinity ? 0 : value > 100 ? 100 : value > 0 ? value : 0;
 
   const { gradientColors, backgroundColor, typographyGradient } =
-    getStyles(value);
+    getStyles(type);
 
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
@@ -120,6 +106,7 @@ function CircularProgressWithLabel({ value }) {
 
 CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default CircularProgressWithLabel;

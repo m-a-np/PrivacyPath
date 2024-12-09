@@ -15,17 +15,17 @@ const UsageBox = ({ type, value, total, remaining }) => {
     return { number, text };
   };
 
-  const getTypographyGradient = (v) => {
-    if (v === Infinity) {
-      return theme.colors.gradients.low.typographyGradient;
-    } else if (v <= 30 || v > 100) {
-      return theme.colors.gradients.low.typographyGradient;
-    } else if (v <= 70) {
-      return theme.colors.gradients.medium.typographyGradient;
-    } else {
-      return theme.colors.gradients.medium.typographyGradient;
-    }
-  };
+  // const getTypographyGradient = (v) => {
+  //   if (v === Infinity) {
+  //     return theme.colors.gradients.low.typographyGradient;
+  //   } else if (v <= 30 || v > 100) {
+  //     return theme.colors.gradients.low.typographyGradient;
+  //   } else if (v <= 70) {
+  //     return theme.colors.gradients.medium.typographyGradient;
+  //   } else {
+  //     return theme.colors.gradients.medium.typographyGradient;
+  //   }
+  // };
 
   const labels = {
     usage: {
@@ -74,7 +74,10 @@ const UsageBox = ({ type, value, total, remaining }) => {
           variant="h6"
           component="div"
           sx={{
-            background: getTypographyGradient(value),
+            background:
+              type === "usage"
+                ? theme.colors.gradients.medium.typographyGradient
+                : theme.colors.gradients.low.typographyGradient,
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
