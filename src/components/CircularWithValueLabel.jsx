@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useId } from "react";
 import { useTheme } from "@mui/material/styles";
 
-function CircularProgressWithLabel({ value }) {
+function CircularProgressWithLabel({ value, type }) {
   const theme = useTheme();
   const gradientId = useId();
 
@@ -21,21 +21,8 @@ function CircularProgressWithLabel({ value }) {
     </linearGradient>
   );
 
-  const getStyles = (value) => {
-    if (value === Infinity || Number.isNaN(value)) {
-      return {
-        gradientColors: theme.colors.gradients.high.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.high.background,
-        typographyGradient: theme.colors.gradients.high.typographyGradient,
-      };
-    }
-    if (value <= 30) {
-      return {
-        gradientColors: theme.colors.gradients.high.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.high.background,
-        typographyGradient: theme.colors.gradients.high.typographyGradient,
-      };
-    } else if (value <= 70) {
+  const getStyles = (type) => {
+    if (type === "usage") {
       return {
         gradientColors:
           theme.colors.gradients.medium.colors[theme.palette.mode],
@@ -52,18 +39,16 @@ function CircularProgressWithLabel({ value }) {
   };
 
   const processedValue =
-    value === Infinity || isNaN(value)
-      ? Infinity
-      : Math.max(0, Math.min(value, 100));
+    value === Infinity ? 0 : value > 100 ? 100 : value > 0 ? value : 0;
 
   const { gradientColors, backgroundColor, typographyGradient } =
-    getStyles(value);
+    getStyles(type);
 
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
       <CircularProgress
         variant="determinate"
-        value={processedValue === Infinity ? 100 : processedValue}
+        value={processedValue}
         size={85}
         sx={{
           color: "transparent",
@@ -108,9 +93,7 @@ function CircularProgressWithLabel({ value }) {
             textAlign: "center",
           }}
         >
-          {`${
-            processedValue === Infinity ? "∞" : Math.round(processedValue) + "%"
-          }`}
+          {`${Math.round(processedValue)}%`}
         </Typography>
       </Box>
 
@@ -123,6 +106,7 @@ function CircularProgressWithLabel({ value }) {
 
 CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default CircularProgressWithLabel;
