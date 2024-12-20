@@ -15,17 +15,17 @@ const UsageBox = ({ type, value, total, remaining }) => {
     return { number, text };
   };
 
-  // const getTypographyGradient = (v) => {
-  //   if (v === Infinity) {
-  //     return theme.colors.gradients.low.typographyGradient;
-  //   } else if (v <= 30 || v > 100) {
-  //     return theme.colors.gradients.low.typographyGradient;
-  //   } else if (v <= 70) {
-  //     return theme.colors.gradients.medium.typographyGradient;
-  //   } else {
-  //     return theme.colors.gradients.medium.typographyGradient;
-  //   }
-  // };
+  const getTypographyGradient = (v) => {
+    if (v === Infinity || Number.isNaN(v)) {
+      return `linear-gradient(0deg, ${theme.palette.success.main}, ${theme.palette.success.dark})`;
+    } else if (v <= 30) {
+      return `linear-gradient(0deg, ${theme.palette.success.main}, ${theme.palette.success.dark})`;
+    } else if (v <= 70) {
+      return `linear-gradient(0deg, ${theme.palette.warning.main}, ${theme.palette.warning.dark})`;
+    } else {
+      return `linear-gradient(0deg, ${theme.palette.error.main}, ${theme.palette.error.dark})`;
+    }
+  };
 
   const labels = {
     usage: {
@@ -74,10 +74,7 @@ const UsageBox = ({ type, value, total, remaining }) => {
           variant="h6"
           component="div"
           sx={{
-            background:
-              type === "usage"
-                ? theme.colors.gradients.medium.typographyGradient
-                : theme.colors.gradients.low.typographyGradient,
+            background: getTypographyGradient(value),
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -85,7 +82,9 @@ const UsageBox = ({ type, value, total, remaining }) => {
             fontWeight: "700",
           }}
         >
-          {remainingParsed.number}
+          {remainingParsed.text === t("infinity")
+            ? remainingParsed.text
+            : remainingParsed.number}
         </Typography>
         <Typography
           variant="h6"
@@ -122,7 +121,9 @@ const UsageBox = ({ type, value, total, remaining }) => {
             {totaltitle}
           </Typography>
           <Typography variant="h6" component="div">
-            {totalParsed.number}
+            {totalParsed.text === t("infinity")
+              ? totalParsed.text
+              : totalParsed.number}
           </Typography>
           <Typography
             variant="h6"
