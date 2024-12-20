@@ -81,8 +81,8 @@ function App() {
   };
 
   const title = data?.username
-    ? `${data.username} Sub Info`
-    : `${import.meta.env.VITE_BRAND_NAME || "Ourenus"} Sub Info`;
+    ? `${data.username} `
+    : `${import.meta.env.VITE_BRAND_NAME || "PrivcyPath"} `;
 
   const isOffSections = useMemo(() => {
     try {
