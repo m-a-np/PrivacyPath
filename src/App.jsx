@@ -82,7 +82,7 @@ function App() {
 
   const title = data?.username
     ? `${data.username} `
-    : `${import.meta.env.VITE_BRAND_NAME || "PrivcyPath"} `;
+    : `${import.meta.env.VITE_BRAND_NAME || "Ourenus"} Sub Info`;
 
   const isOffSections = useMemo(() => {
     try {
