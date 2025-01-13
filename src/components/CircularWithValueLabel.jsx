@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useId } from "react";
 import { useTheme } from "@mui/material/styles";
 
-function CircularProgressWithLabel({ value }) {
+function CircularProgressWithLabel({ value, type }) {
   const theme = useTheme();
   const gradientId = useId();
 
@@ -21,6 +21,7 @@ function CircularProgressWithLabel({ value }) {
     </linearGradient>
   );
 
+  // استایل رنگ از کد دوم
   const getStyles = (value) => {
     if (value === Infinity || Number.isNaN(value)) {
       return {
@@ -52,9 +53,7 @@ function CircularProgressWithLabel({ value }) {
   };
 
   const processedValue =
-    value === Infinity || isNaN(value)
-      ? Infinity
-      : Math.max(0, Math.min(value, 100));
+    value === Infinity ? 0 : value > 100 ? 100 : value > 0 ? value : 0;
 
   const { gradientColors, backgroundColor, typographyGradient } =
     getStyles(value);
@@ -63,7 +62,7 @@ function CircularProgressWithLabel({ value }) {
     <Box sx={{ position: "relative", display: "inline-flex" }}>
       <CircularProgress
         variant="determinate"
-        value={processedValue === Infinity ? 100 : processedValue}
+        value={processedValue}
         size={85}
         sx={{
           color: "transparent",
@@ -108,9 +107,7 @@ function CircularProgressWithLabel({ value }) {
             textAlign: "center",
           }}
         >
-          {`${
-            processedValue === Infinity ? "∞" : Math.round(processedValue) + "%"
-          }`}
+          {`${Math.round(processedValue)}%`}
         </Typography>
       </Box>
 
@@ -123,6 +120,7 @@ function CircularProgressWithLabel({ value }) {
 
 CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default CircularProgressWithLabel;
