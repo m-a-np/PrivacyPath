@@ -21,22 +21,9 @@ function CircularProgressWithLabel({ value, type }) {
     </linearGradient>
   );
 
-  // استایل رنگ از کد دوم
-  const getStyles = (value) => {
-    if (value === Infinity || Number.isNaN(value)) {
-      return {
-        gradientColors: theme.colors.gradients.high.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.high.background,
-        typographyGradient: theme.colors.gradients.high.typographyGradient,
-      };
-    }
-    if (value <= 30) {
-      return {
-        gradientColors: theme.colors.gradients.high.colors[theme.palette.mode],
-        backgroundColor: theme.colors.gradients.high.background,
-        typographyGradient: theme.colors.gradients.high.typographyGradient,
-      };
-    } else if (value <= 70) {
+  // style
+  const getStyles = (type) => {
+    if (type === "usage") {
       return {
         gradientColors:
           theme.colors.gradients.medium.colors[theme.palette.mode],
@@ -56,7 +43,7 @@ function CircularProgressWithLabel({ value, type }) {
     value === Infinity ? 0 : value > 100 ? 100 : value > 0 ? value : 0;
 
   const { gradientColors, backgroundColor, typographyGradient } =
-    getStyles(value);
+    getStyles(type);
 
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
