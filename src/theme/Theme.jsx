@@ -19,17 +19,16 @@ const colors = {
     purpleDark: commonColors.darkPurple,
     low: {
       colors: {
-        light: ["rgba(255, 102, 102, 1)", "rgba(153, 0, 0, 1)"],
-        dark: ["rgba(255, 102, 102, .5)", "rgba(153, 0, 0, .9)"],
+        light: ["#9589a5", "#983ce4"],
+        dark: ["#9589a5", "#983ce4"],
       },
-      background: "rgba(214, 194, 35, 0.2)",
-      typographyGradient:
-        "linear-gradient(0deg, rgba(255, 102, 102, 1), rgba(153, 0, 0, 1))",
+      background: "#973ce32b",
+      typographyGradient: "linear-gradient(0deg, #9589a5, #983ce4)",
     },
     medium: {
       colors: {
-        light: ["rgba(207, 110, 22, 1)", "rgba(255, 165, 0, 1)"],
-        dark: ["rgba(255, 255, 102, 0.4)"],
+        light: ["rgb(249 175 63)"],
+        dark: ["rgb(249 175 63)"],
       },
       background: "rgba(214, 194, 35, 0.2)",
       typographyGradient:
@@ -51,7 +50,7 @@ const colors = {
   },
   apps: {
     light: "rgba(72, 76, 112, 1)",
-    dark: "rgba(117, 122, 166, 1)",
+    dark: "rgb(117 122 166 / 53%)",
     priceBtn: {
       free: {
         btn: { dark: "rgba(26, 41, 39, 1)", light: "rgba(226, 241, 239, 1)" },
@@ -67,18 +66,11 @@ const colors = {
         },
         text: { dark: commonColors.white, light: commonColors.white },
       },
-      ad: {
-        btn: {
-          dark: "rgba(255, 255, 255, 0.65)",
-          light: "rgba(255, 255, 255, 0.65)",
-        },
-        text: { dark: commonColors.black, light: commonColors.black },
-      },
     },
   },
   configs: {
     light: commonColors.white,
-    dark: "rgba(72, 76, 122, 1)",
+    dark: "rgb(72 76 122 / 59%)",
     revert: {
       dark: commonColors.white,
       light: "rgba(72, 76, 122, 1)",
@@ -91,16 +83,16 @@ const colors = {
     },
     notActive: {
       dark: commonColors.white,
-      light: "rgba(121, 124, 146, 1)",
+      light: "rgba(121, 124, 146, .44)",
     },
     background: {
-      dark: "rgba(72, 76, 111, 1)",
+      dark: "rgb(72 76 111 / 44%)",
       light: commonColors.lightGray,
     },
-    slider: "rgba(143, 141, 179, 0.6)",
+    slider: "rgba(143, 141, 179, 0.4)",
   },
   box: {
-    dark: "rgba(72, 76, 111, 1)",
+    dark: "rgb(72 76 111 / 44%)",
     light: commonColors.white,
     border: {
       dark: "",
@@ -169,8 +161,8 @@ const colors = {
     dark: "rgba(204, 204, 204, 1)",
   },
   background: {
-    dark: commonColors.darkGray,
-    light: commonColors.lightGray,
+    dark: "rgb(34 36 41)",
+    light: "rgb(235 232 253)",
   },
 };
 
@@ -192,7 +184,7 @@ const getTheme = (isDarkMode) =>
             border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.42)" : "",
             color: isDarkMode ? commonColors.black : commonColors.white,
             fontWeight: "bold",
-            fontFamily: "'Vazirmatn', sans-serif",
+            fontFamily: "'Lalezar', sans-serif",
             "&:before": {
               display: "none",
             },
@@ -204,7 +196,7 @@ const getTheme = (isDarkMode) =>
         styleOverrides: {
           root: {
             borderRadius: "50px",
-            fontFamily: "'Vazirmatn', sans-serif",
+            fontFamily: "'Lalezar', sans-serif",
           },
         },
       },
@@ -218,7 +210,7 @@ const getTheme = (isDarkMode) =>
             borderRadius: "12px !important",
             border: "1px solid rgba(72, 68, 74, 0.31)",
             fontWeight: "bold",
-            fontFamily: "'Vazirmatn', sans-serif",
+            fontFamily: "'Lalezar', sans-serif",
             "&:hover": {
               background: commonColors.transparentBlack,
             },
@@ -228,14 +220,14 @@ const getTheme = (isDarkMode) =>
       MuiTypography: {
         styleOverrides: {
           root: {
-            fontFamily: "'Vazirmatn', sans-serif",
+            fontFamily: "'Lalezar', sans-serif",
           },
         },
       },
       MuiGrid: {
         styleOverrides: {
           root: {
-            fontFamily: "'Vazirmatn', sans-serif",
+            fontFamily: "'Lalezar', sans-serif",
           },
         },
       },
