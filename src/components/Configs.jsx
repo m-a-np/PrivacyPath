@@ -82,16 +82,30 @@ const Configs = ({
             </Grid>
           </AccordionSummary>
           <AccordionDetails>
+                        <Button
+              onClick={() =>
+                handleCopyToClipboard(filteredLinks.join("\n"), -1, t)
+              }
+              sx={{
+                width: "100%",
+                background: theme.colors.glassColor,
+                color: "#fff",
+                borderRadius: "16px",
+                border: "1px solid #48444a4f",
+                "&:hover": {
+                  background: "rgba(0, 0, 0, 0.3)",
+                },
+              }}
+            >
+              {t("copyAll")}
+            </Button>
             <List>
               {filteredLinks?.map((config, index) => {
                 const title = extractNameFromConfigURL(config);
                 return (
                   <ListItem
                     key={index}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOpen(title, filteredLinks?.[index], index);
-                    }}
+                    onClick={() => handleOpen()}
                     sx={liStyle}
                   >
                     <Grid
@@ -132,23 +146,7 @@ const Configs = ({
                 );
               })}
             </List>
-            <Button
-              onClick={() =>
-                handleCopyToClipboard(filteredLinks.join("\n"), -1, t)
-              }
-              sx={{
-                width: "100%",
-                background: theme.colors.glassColor,
-                color: "#000",
-                borderRadius: "16px",
-                border: "1px solid #48444a4f",
-                "&:hover": {
-                  background: "rgba(0, 0, 0, 0.1)",
-                },
-              }}
-            >
-              {t("copyAll")}
-            </Button>
+
           </AccordionDetails>
         </Accordion>
       </Grid>
