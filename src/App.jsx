@@ -49,7 +49,7 @@ function App() {
           ? data.links.slice(0, -1)
           : data.links;
       setDataLinks(links);
-    } else {
+    } else if (data && !data.links) {
       GetInfoRequest.getConfigs().then((res) => {
         const links = res.data.trim();
         const decodedLinks =
@@ -64,7 +64,7 @@ function App() {
         );
       });
     }
-  }, [data?.links]);
+  }, [data]);
 
 
   const getAdjustedUrl = (subURL) => {
@@ -81,8 +81,8 @@ function App() {
   };
 
   const title = data?.username
-    ? `${data.username} `
-    : `${import.meta.env.VITE_BRAND_NAME || "PrivacyPath"} `;
+    ? `${data.username} Sub Info`
+    : `${import.meta.env.VITE_BRAND_NAME || "Ourenus"} Sub Info`;
 
   const isOffSections = useMemo(() => {
     try {
@@ -233,7 +233,7 @@ function App() {
                       },
                     }}
                     liStyle={{
-                      background: "rgba(0, 0, 0, 0.5)",
+                      background: theme.colors.glassColor,
                     }}
                     isFirst={!isOffSections.appsBox}
                   />
